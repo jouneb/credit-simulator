@@ -16,8 +16,8 @@ describe('CreditService', () => {
           provide: getModelToken(Credit.name),
           useValue: {
             create: jest.fn(),
-            find: jest.fn().mockReturnThis(),  // Moquer la méthode find
-            exec: jest.fn(),  // Ajouter exec ici pour éviter l'erreur
+            find: jest.fn().mockReturnThis(),  
+            exec: jest.fn(),  
           },
         },
       ],

@@ -9,6 +9,7 @@ services:
       - MONGO_URI=mongodb://mongodb:27017/mydb
     depends_on:
       - mongodb
+      - rabbitmq
     networks:
       - my-network
 
@@ -26,6 +27,14 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+    networks:
+      - my-network
+
+  rabbitmq:
+    image: "rabbitmq:management"
+    ports:
+      - "15672:15672"  
+      - "5672:5672"    
     networks:
       - my-network
 

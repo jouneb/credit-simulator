@@ -1,8 +1,18 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { submitCreditRequest, getCreditOffers } from "../services/api";
 
+interface Offer {
+  id: number;
+  bankName: string;
+  approvedAmount: number;
+  periodMonths: number;
+  interestRate: number;
+  monthlyCost: number;
+  offerUrl: string;
+}
+
 interface CreditFormProps {
-  onOffersReceived: (offers: any[]) => void;
+  onOffersReceived: (offers: Offer[] ) => void;
 }
 
 const CreditForm: React.FC<CreditFormProps> = ({ onOffersReceived }) => {
@@ -51,7 +61,7 @@ const CreditForm: React.FC<CreditFormProps> = ({ onOffersReceived }) => {
 
       // Reset form after submission
       setFormData(initialState);
-    } catch (err) {
+    } catch {
       setError("Error submitting the form.");
     } finally {
       setLoading(false);

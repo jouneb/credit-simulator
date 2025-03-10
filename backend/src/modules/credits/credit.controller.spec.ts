@@ -90,6 +90,7 @@ describe('CreditController', () => {
   it('should return mock credit offers', async () => {
     const mockOffers = [
       {
+        id:1,
         bankName: 'Fantasia Bank 1',
         approvedAmount: 4000,
         periodMonths: 24,
@@ -98,6 +99,7 @@ describe('CreditController', () => {
         offerUrl: 'https://www.fantasiabank1.com/offer',
       },
       {
+        id:2,
         bankName: 'Fantasia Bank 2',
         approvedAmount: 5000,
         periodMonths: 36,
@@ -106,6 +108,7 @@ describe('CreditController', () => {
         offerUrl: 'https://www.fantasiabank2.com/offer',
       },
       {
+        id:3,
         bankName: 'Fantasia Bank 3',
         approvedAmount: 3500,
         periodMonths: 18,

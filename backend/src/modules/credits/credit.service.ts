@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Credit } from './credit.schema';
 
 export interface CreditOffer {
+  id : number;
   bankName: string;
   approvedAmount: number;
   periodMonths: number;
@@ -36,6 +37,7 @@ export class CreditService {
       const monthlyCost = (approvedAmount * (1 + interestRate / 100)) / periodMonths;
 
       offers.push({
+        id: i + 1,
         bankName: `Fantasia Bank ${i + 1}`,
         approvedAmount,
         periodMonths,

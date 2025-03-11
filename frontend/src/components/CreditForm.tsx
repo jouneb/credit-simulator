@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
+import Cookies from "js-cookie"; 
 import { submitCreditRequest, getCreditOffers } from "../services/api";
 
 interface Offer {
@@ -28,6 +29,18 @@ const CreditForm: React.FC<CreditFormProps> = ({ onOffersReceived }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // create ID from cookie or generate it 
+  const getUserId = () => {
+    let userId = Cookies.get("userId");
+
+    if (!userId) {
+      userId = Math.random().toString(36).substr(2, 9);
+      Cookies.set("userId", userId, { expires: 365 }); 
+    }
+
+    return userId;
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -41,8 +54,11 @@ const CreditForm: React.FC<CreditFormProps> = ({ onOffersReceived }) => {
     setLoading(true);
     setError("");
 
+    const userId = getUserId(); 
+
     const dataToSubmit = {
       ...formData,
+      userId,  
       requestedAmount: Number(formData.requestedAmount),
       termMonths: Number(formData.termMonths),
       monthlyIncome: Number(formData.monthlyIncome),
@@ -59,7 +75,7 @@ const CreditForm: React.FC<CreditFormProps> = ({ onOffersReceived }) => {
       const fetchedOffers = await getCreditOffers();
       onOffersReceived(fetchedOffers);
 
-      // Reset form after submission
+    // Reset form after submission
       setFormData(initialState);
     } catch {
       setError("Error submitting the form.");

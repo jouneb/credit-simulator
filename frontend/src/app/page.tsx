@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import CreditForm from '../components/CreditForm';
 import OfferList from '../components/OfferList';
+import PreviousRequests from '@/components/PreviousRequests';
 
 interface Offer {
   id: number;
@@ -26,6 +27,7 @@ export default function Page() {
       <h1>Credit Application</h1>
       <CreditForm onOffersReceived={handleOffersReceived} />
       <OfferList offers={offers} />
+      <PreviousRequests />
     </div>
   );
 }

@@ -12,11 +12,52 @@ This project implements a full-stack application for credit applications, allowi
 - **MongoDB**: Stores credit application data.
 - **Docker**: Used to containerize the application.
 
-## Requirements
+## Project Setup
 
 - **Docker**: For containerizing the backend, frontend, and MongoDB.
 - **Node.js**: Version 18 or higher.
 - **MongoDB**: Used to store credit applications.
+
+## Requirements
+
+### Backend (NestJS)
+
+- Implement a REST endpoint to receive credit applications and store them in MongoDB.
+- Generate three mock offers with basic interest calculations and return them in the response.
+- Implement an endpoint to retrieve previous credit applications from MongoDB.
+- Implement a RabbitMQ message queue to send credit requests for asynchronous processing (optional).
+- Dockerize the backend (optional).
+- Write unit and integration tests (optional).
+
+### Frontend (Next.js)
+
+- Create a form to collect credit application details.
+- Connect the form to the backend using `fetch` or `axios`.
+- Display the simulated offers as cards on the same page after submission.
+- Create a view to show all previous applications.
+- Dockerize the frontend (optional).
+- Write unit and integration tests (optional).
+- You may use UI libraries like TailwindCSS, Bootstrap, or Material UI (optional).
+
+### MongoDB
+
+- Create a schema for credit applications with the following fields (additional fields may be added):
+  - `name`: string
+  - `email`: string
+  - `requested_amount`: number
+  - `term_months`: number
+  - `monthly_income`: number
+  - `request_date`: date
+  - `status`: string (pending, approved, rejected)
+
+### RabbitMQ (Optional)
+
+- Set up RabbitMQ to receive and process credit applications.
+- Process each request (e.g., randomly change its status to "approved" or "rejected" after 5 seconds).
+
+### Docker (Optional)
+
+- Include a `Dockerfile` and `docker-compose.yml` to containerize the backend, frontend, and MongoDB.
 
 ## Getting Started
 
@@ -107,3 +148,12 @@ If you're using RabbitMQ locally (via Docker), you can access its management int
    The project uses a queue named `creditQueue` to handle credit applications. You can view it in the "Queues" section of the RabbitMQ console.
 
 ---
+
+## Improvements 
+
+If given more time, I would:
+
+    - Add user authentication with login and password encryption.
+    - Encrypt sensitive data in the database (e.g., email, income, etc.).
+    - Enhance the UI with better design and user feedback.
+    - Implement more advanced features like email notifications after submitting credit requests.

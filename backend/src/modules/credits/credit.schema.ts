@@ -23,6 +23,9 @@ export class Credit extends Document {
 
   @Prop({ default: 'pending' })
   status: string; // 'pending', 'approved', 'rejected'
+
+  @Prop({ required: true })
+  userId: string;
 }
 
 export const CreditSchema = SchemaFactory.createForClass(Credit);

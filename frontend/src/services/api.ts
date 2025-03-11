@@ -4,6 +4,7 @@ interface CreditRequestData {
   requestedAmount: number;
   termMonths: number;
   monthlyIncome: number;
+  userId: string;
 }
 
 

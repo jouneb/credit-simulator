@@ -33,6 +33,10 @@ export class CreditService {
     return this.creditModel.find().exec();
   }
 
+  async findByUserID(userId: string): Promise<Credit[]> {
+    return this.creditModel.find({ userId }).exec();
+  }
+
   generateMockOffers(): CreditOffer[] {
     const offers: CreditOffer[] = [];
 

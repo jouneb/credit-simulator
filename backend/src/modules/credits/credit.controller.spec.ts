@@ -32,6 +32,7 @@ describe('CreditController', () => {
 
   it('should create a new credit', async () => {
     const creditDto = {
+      userId: 'user-123',
       name: 'John Doe',
       email: 'john@example.com',
       requestedAmount: 10000,
@@ -40,6 +41,7 @@ describe('CreditController', () => {
     };
 
     const createdCredit: Credit = {
+      userId: 'user-123',
       _id: '123456789',
       name: 'John Doe',
       email: 'john@example.com',
@@ -60,6 +62,7 @@ describe('CreditController', () => {
   it('should return all credits', async () => {
     const credits: Credit[] = [
       {
+        userId: 'user-123',
         _id: '1',
         name: 'John Doe',
         email: 'john@example.com',
@@ -70,6 +73,7 @@ describe('CreditController', () => {
         status: 'pending',
       } as Credit,
       {
+        userId: 'user-123',
         _id: '2',
         name: 'Jane Doe',
         email: 'jane@example.com',

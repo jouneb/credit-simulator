@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, Query, Param } from '@nestjs/common';
 import { CreditOffer, CreditService } from './credit.service';
 import { Credit } from './credit.schema';
 
@@ -15,6 +15,12 @@ export class CreditController {
   async findAll(): Promise<Credit[]> {
     return this.creditService.findAll();
   }
+
+  @Get('user/:userId')
+  async findByUserID(@Param('userId') userId: string): Promise<Credit[]> {
+    return this.creditService.findByUserID(userId);
+  }
+
 
   @Get('offers')
   async getMockOffers(): Promise<CreditOffer[]> {

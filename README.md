@@ -81,7 +81,7 @@ This will build and start the following services:
 - Backend (`NestJS`)
 - Frontend (`Next.js`)
 - MongoDB
-- RabbitMQ (optional, if configured)
+- RabbitMQ 
 
 ### 3. Running the Backend and Frontend Separately
 
